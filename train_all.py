@@ -59,6 +59,9 @@ def cross_validate(args: Namespace, logger: Logger = None) -> Tuple[np.ndarray, 
     args.dataset_name = 'df_h'
     data_h = get_data(path=args.data_path, args=args, logger=logger)
 
+    args.dataset_name = 'df_all_data'
+    data = get_data(path=args.data_path, args=args, logger=logger)
+
     args.task_names = get_task_names(os.path.join(args.data_path, f'{args.dataset_name}.csv'))
     args.num_tasks = len(data_heavy_Fermion) + len(data_others) + len(data_cuprate) + len(data_iron) + len(data_h)
     args.features_size = data_h.features_size()
